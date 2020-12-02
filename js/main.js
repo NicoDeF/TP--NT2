@@ -79,7 +79,7 @@ Vue.component('botones', {
     template: `
         <div id="navigator">
             <button id="reset" @click="restart">New colors</button>
-            <span id="message"> {{mensajejuego}} </span>
+            <span id="message" style="color:red"> {{mensajejuego}} </span>
             <button id="easy" v-bind:class="{ selected: !isHard }" @click="easy">easy</button>
             <button id="hard" v-bind:class="{ selected: isHard }" @click="hard">hard</button>
     
@@ -121,12 +121,12 @@ var app = new Vue({
     methods: {
         conocerGanador(colorcuadrado, cuadradoIndex) {
             if (JSON.stringify(colorcuadrado) === JSON.stringify(this.colorJugar)) {
-                this.mensajejuego = "Ganasteeee";
+                this.mensajejuego = "Ganaste";
                 for (let index = 0; index < this.colors.length; index++) {
                     Object.assign(this.colors[index], colorcuadrado);
                 }
             } else {
-                this.mensajejuego = "Proba de nuevo";
+                this.mensajejuego = "Volve a intentar";
                 this.colors[cuadradoIndex].r = 35;
                 this.colors[cuadradoIndex].g = 35;
                 this.colors[cuadradoIndex].b = 35;
